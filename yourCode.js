@@ -64,5 +64,21 @@ var countTags = function countTags(items) {
  * EXTRACT HASHTAGS
  */
 var extractHashTags = function extractHashTags(str) {
+	console.log(str);
+	var stim = str.match(/[w ]+#\w+/g);
 
+	if(stim === null || stim === undefined){
+		console.log([]);
+		console.log(" ------ ")
+		return [];
+	}
+	for(var i = 1; i < stim.length; i++){
+	    if(stim[i] === stim[i-1]){
+	        stim.splice(i,1);
+	        i--;
+	     }
+	}
+	console.log(stim);
+	console.log(" ------ ");
+	return stim;
 };
