@@ -4,7 +4,18 @@
  */
 // All your code will go here
 var makeStack = function() {
-	return {};
+	var values = [];
+    function push(el) {
+    };
+    function pop() {
+    };
+    function isEmpty() {
+    };
+    return {
+        push: push,
+        pop: pop,
+        isEmpty: isEmpty
+    };
 };
 
 
