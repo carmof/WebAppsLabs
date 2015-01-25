@@ -5,7 +5,7 @@
 // All your code will go here
 var makeStack = function() {
 
-
+	var a;
 };
 
 
