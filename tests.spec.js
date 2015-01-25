@@ -9,8 +9,9 @@ try {
 
 // Do not change anything above this line
 describe('Your code for stacks', function() {
+	// Add more "it" sections below
    it('defines a variable makeStack', function() {
 		expect(function() { makeStack; }).to.not.throw(Error);
    });
-   // Add more "it" sections below
+   
 });
