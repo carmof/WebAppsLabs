@@ -18,3 +18,10 @@ describe('Your code for stacks', function() {
    });
    
 });
+
+describe('Your makeStack function', function() {
+	var stack = makeStack();
+	it('returns an object', function() {
+		expect(stack).to.be.a('object');
+	});
+});
