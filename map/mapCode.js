@@ -3,7 +3,7 @@
  * Name 2: Filipe Oliveira
  */
 
-// Do not change the name of this function
+// Do not change the name of this functionsnction
 var makeMap = function() {
 // All your code will go inside this function
    // This object should contain the methods you want to expose:
@@ -49,6 +49,7 @@ var makeMap = function() {
              throw new Error('at makeMap.add; Key (' + key + ') already exists!');
          } else {
             storedPairs[key] = value;
+            return o;
          }
       },
 
@@ -60,7 +61,7 @@ var makeMap = function() {
              throw new Error('at makeMap.update; Key (' + key + ') doesn\'t exist!');
          } else {
             storedPairs[key] = value;
-            return storedPairs;
+            return o;
          }
       },
 
