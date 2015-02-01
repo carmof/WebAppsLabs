@@ -63,6 +63,7 @@ function makeTaskFromObject(o) {
 
 function makeTaskFromString(str) {
 	"use strict";
+	return Task.fromObject(processString(str));
 }
 
 
