@@ -4,7 +4,7 @@
  * Contains implementation for a "task" "class"
  */
 
-var Task, proto;
+var Task, proto, idGenerator = 0;
 
 // Helper method. You should not need to change it.
 // Use it in makeTaskFromString
@@ -27,6 +27,24 @@ function processString(s) {
 
 function makeNewTask() {
 	"use strict";
+	idGenerator += 1;
+	var o = Object.create(proto, {
+                id: {
+                    enumerable: true,
+                    configurable: false,
+                    writeable: false,
+                    value: idGenerator
+                },
+                tags: {
+                    enumerable: false,
+                    configurable: false,
+                    writeable: false,
+                    value: []
+                }
+            });
+	o.completedTime = null;
+	o.title = "";
+	return Object.preventExtensions(o);
 }
 
 function makeTaskFromObject(o) {
