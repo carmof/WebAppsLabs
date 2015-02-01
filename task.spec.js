@@ -40,7 +40,8 @@ describe('Tests for function makeTaskfromObject', function() {
 		var objtask = Task.fromObject();
 		it('Returns an object', function () {
 			expect(objtask).to.be.a('object');
-
 		});
 	
 });
+
+
