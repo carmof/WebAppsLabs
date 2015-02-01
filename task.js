@@ -73,11 +73,48 @@ function makeTaskFromString(str) {
 
 proto = {
 	// Add instance methods here
-	setTitle: function(title){
-		this.title = title;
-	},
 	setTags: function(tags){
 		this.tags = tags;
+		return this;
+	},
+	setTitle: function(str){
+		this.title = str.trim();
+		return this;
+	},
+	isCompleted: function(){
+		return this.completedTime !== null;
+	},
+	toggleCompleted: function(){
+		if (this.isCompleted()){
+			this.completedTime = null;
+		}else {
+			this.completedTime = new Date();
+		}
+		return this;
+	},
+	hasTag: function(){
+
+	},
+	addTag: function(){
+
+	},
+	removeTag: function(){
+
+	},
+	toggleTag: function(){
+
+	},
+	addTags: function(){
+
+	},
+	removeTags: function(){
+
+	},
+	toogleTags: function(){
+
+	},
+	clone: function(){
+
 	}
 };
 
