@@ -49,6 +49,16 @@ function makeNewTask() {
 
 function makeTaskFromObject(o) {
 	"use strict";
+	var objTask = Task.new();
+	if (o !== undefined){
+		if (o.hasOwnProperty('title')){
+			objTask.setTitle(o.title);
+		}
+		if (o.hasOwnProperty('tags')){
+			objTask.setTags(o.tags);
+		}
+	}
+	return objTask;
 }
 
 function makeTaskFromString(str) {
@@ -61,7 +71,13 @@ function makeTaskFromString(str) {
  */
 
 proto = {
-   // Add instance methods here
+	// Add instance methods here
+	setTitle: function(title){
+		this.title = title;
+	},
+	setTags: function(tags){
+		this.tags = tags;
+	}
 };
 
 
