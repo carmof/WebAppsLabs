@@ -55,7 +55,7 @@ function makeTaskFromObject(o) {
 			objTask.setTitle(o.title);
 		}
 		if (o.hasOwnProperty("tags")){
-			objTask.setTags(o.tags);
+			objTask.addTags(o.tags);
 		}
 	}
 	return objTask;
@@ -73,14 +73,6 @@ function makeTaskFromString(str) {
 
 proto = {
 	// Add instance methods here
-	setTags: function(tags){
-		"use strict";
-		console.log("HIIIII");
-		console.log(tags);
-		tags = [ 1 ];
-		this.tags.concat(tags);
-		return this;
-	},
 	setTitle: function(str){
 		"use strict";
 		this.title = str.trim();
@@ -101,8 +93,8 @@ proto = {
 	},
 	hasTag: function(str){
 		"use strict";
-		var i, tags;
-		for (i = 0;i < tags.length;i += 1){
+		var i;
+		for (i = 0;i < this.tags.length;i += 1){
 			if (this.tags[ i ] === str){
 				return true;
 			}
@@ -135,11 +127,12 @@ proto = {
 		}
 		return this;
 	},
-	addTags: function(listStr){
+	addTags: function(tags){
 		"use strict";
-		listStr.forEach(function(str){
-			this.addTag(str);
-		});
+		var i;
+		for (i = 0; i < tags.length; i += 1){
+			this.addTag(tags[i]);
+		}
 		return this;
 	},
 	removeTags: function(){
