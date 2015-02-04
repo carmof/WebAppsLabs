@@ -74,17 +74,24 @@ function makeTaskFromString(str) {
 proto = {
 	// Add instance methods here
 	setTags: function(tags){
-		this.tags = tags;
+		"use strict";
+		console.log("HIIIII");
+		console.log(tags);
+		tags  = [1];
+		this.tags.concat(tags);
 		return this;
 	},
 	setTitle: function(str){
+		"use strict";
 		this.title = str.trim();
 		return this;
 	},
 	isCompleted: function(){
+		"use strict";
 		return this.completedTime !== null;
 	},
 	toggleCompleted: function(){
+		"use strict";
 		if (this.isCompleted()){
 			this.completedTime = null;
 		}else {
@@ -92,29 +99,70 @@ proto = {
 		}
 		return this;
 	},
-	hasTag: function(){
+	hasTag: function(str){
+		"use strict";
+		var i;
+		for(i=0; i < tags.length ; i++){
+			if(this.tags[i] === str){
+				return true;
+			}
+		}
+		return false;
+	},
+	addTag: function(str){
+		"use strict";
+		if(!this.hasTag()){
+			this.tags.push(str);
+		}
+	},
+	removeTag: function(str){
+		"use strict";
+		var i;
+		for(i=0; i < tags.length ; i++){
+			if(tags[i] === str){
+				this.tags.splice(i, 1);
+				return this;
+			}
+		}
+		return this;
 
 	},
-	addTag: function(){
-
+	toggleTag: function(str){
+		"use strict";
+		if(this.hasTag()){
+			this.removeTag(str);
+		}else{
+			this.addTag(str);
+		}
+		return this;
 	},
-	removeTag: function(){
-
-	},
-	toggleTag: function(){
-
-	},
-	addTags: function(){
-
+	addTags: function(listStr){
+		"use strict";
+		listStr.forEach(function(str){
+			this.addTag(str);
+		});
+		return this;
 	},
 	removeTags: function(){
-
+		"use strict";
+		listStr.forEach(function(str){
+			this.addTag(str);
+		});
+		return this;
 	},
 	toogleTags: function(){
-
+		"use strict";
+		listStr.forEach(function(str){
+			this.toggleTag(str);
+		});
 	},
-	clone: function(){
-
+	clone: function(o){
+		"use strict";
+		var clone = Task.new();
+		clone.setTitle = o.title;
+		clone.setTags = o.tags;
+		clone.completedTime = o.completedTime;
+		return clone;
 	}
 };
 
