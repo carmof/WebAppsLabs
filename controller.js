@@ -40,7 +40,8 @@ var makeController = function(element) {
     * an "input" button for "remove". See examples in sample.html
     */
    function newTaskHTML(str) {
-
+   		var span = $("span").append("str");
+   		var input =
    }
 
    /*
