@@ -50,11 +50,11 @@ function makeNewTask() {
 function makeTaskFromObject(o) {
 	"use strict";
 	var objTask = Task.new();
-	if (o !== undefined){
-		if (o.hasOwnProperty('title')){
+	if (o !== "undefined"){
+		if (o.hasOwnProperty("title")){
 			objTask.setTitle(o.title);
 		}
-		if (o.hasOwnProperty('tags')){
+		if (o.hasOwnProperty("tags")){
 			objTask.setTags(o.tags);
 		}
 	}
@@ -77,7 +77,7 @@ proto = {
 		"use strict";
 		console.log("HIIIII");
 		console.log(tags);
-		tags  = [1];
+		tags = [ 1 ];
 		this.tags.concat(tags);
 		return this;
 	},
@@ -101,9 +101,9 @@ proto = {
 	},
 	hasTag: function(str){
 		"use strict";
-		var i;
-		for(i=0; i < tags.length ; i++){
-			if(this.tags[i] === str){
+		var i, tags;
+		for (i = 0;i < tags.length;i += 1){
+			if (this.tags[ i ] === str){
 				return true;
 			}
 		}
@@ -111,27 +111,26 @@ proto = {
 	},
 	addTag: function(str){
 		"use strict";
-		if(!this.hasTag()){
+		if (!this.hasTag()){
 			this.tags.push(str);
 		}
 	},
 	removeTag: function(str){
 		"use strict";
-		var i;
-		for(i=0; i < tags.length ; i++){
-			if(tags[i] === str){
+		var i, tags;
+		for (i = 0; i < tags.length ; i += 1){
+			if (tags[ i ] === str){
 				this.tags.splice(i, 1);
 				return this;
 			}
 		}
 		return this;
-
 	},
 	toggleTag: function(str){
 		"use strict";
-		if(this.hasTag()){
+		if (this.hasTag()){
 			this.removeTag(str);
-		}else{
+		}else {
 			this.addTag(str);
 		}
 		return this;
@@ -145,6 +144,7 @@ proto = {
 	},
 	removeTags: function(){
 		"use strict";
+		var listStr;
 		listStr.forEach(function(str){
 			this.addTag(str);
 		});
@@ -152,6 +152,7 @@ proto = {
 	},
 	toogleTags: function(){
 		"use strict";
+		var listStr;
 		listStr.forEach(function(str){
 			this.toggleTag(str);
 		});
