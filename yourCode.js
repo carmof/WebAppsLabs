@@ -1,7 +1,8 @@
 /*
- * Name 1: YourNameHere
- * Name 2: YourNameHere
+ * Name 1: Felipe Carmo
+ * Name 2: Filipe Oliveira
  */
+
 // All your code will go here
 var makeStack = function() {
 	var values = [];
