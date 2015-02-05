@@ -28,7 +28,7 @@ function processString(s) {
 function makeNewTask() {
 	"use strict";
 	idGenerator += 1;
-	var o = Object.create(proto, {
+	var o = Object.create({
                 id: {
                     enumerable: true,
                     configurable: false,
@@ -75,9 +75,6 @@ proto = {
 	// Add instance methods here
 	setTags: function(tags){
 		"use strict";
-		console.log("HIIIII");
-		console.log(tags);
-		tags  = [1];
 		this.tags.concat(tags);
 		return this;
 	},
