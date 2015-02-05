@@ -5,9 +5,9 @@
  */
 var expect, Task, TaskCollection;
 
-expect = require('./chai.js').expect;
+expect = require("./chai.js").expect;
 
-Task = require('./task.js');
-TaskCollection = require('./collection.js');
+Task = require("./task.js");
+TaskCollection = require("./collection.js");
 
 // ADD YOUR TESTS HERE
