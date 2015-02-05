@@ -103,15 +103,17 @@ proto = {
 	},
 	addTag: function(str){
 		"use strict";
-		if (!this.hasTag()){
+		str = str.replace("#", "");
+		if (!this.hasTag(str)){
 			this.tags.push(str);
 		}
 	},
 	removeTag: function(str){
 		"use strict";
-		var i, tags;
-		for (i = 0; i < tags.length ; i += 1){
-			if (tags[ i ] === str){
+		str = str.replace("#", "");
+		var i;
+		for (i = 0; i < this.tags.length ; i += 1){
+			if (this.tags[ i ] === str){
 				this.tags.splice(i, 1);
 				return this;
 			}
@@ -120,7 +122,7 @@ proto = {
 	},
 	toggleTag: function(str){
 		"use strict";
-		if (this.hasTag()){
+		if (this.hasTag(str)){
 			this.removeTag(str);
 		}else {
 			this.addTag(str);
@@ -131,15 +133,15 @@ proto = {
 		"use strict";
 		var i;
 		for (i = 0; i < tags.length; i += 1){
-			this.addTag(tags[i]);
+			this.addTag(tags[ i ]);
 		}
 		return this;
 	},
-	removeTags: function(){
+	removeTags: function(tags){
 		"use strict";
-		var listStr;
-		listStr.forEach(function(str){
-			this.addTag(str);
+		console.log(tags);
+		tags.forEach.apply(this, function(str){
+			this.removeTag(str);
 		});
 		return this;
 	},
