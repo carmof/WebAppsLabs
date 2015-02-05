@@ -139,24 +139,28 @@ proto = {
 	},
 	removeTags: function(tags){
 		"use strict";
-		console.log(tags);
-		tags.forEach.apply(this, function(str){
-			this.removeTag(str);
-		});
+		var i, l;
+		for(i = 0; i < tags.length; i += 1){
+			for(l = 0; l < this.tags.length; l += 1){
+				if (this.tags[ l ] === tags[ i ]){
+					this.removeTag(tags[ i  ]);
+				}
+			}
+		}
 		return this;
 	},
-	toogleTags: function(){
+	toogleTags: function(tags){
 		"use strict";
-		var listStr;
-		listStr.forEach(function(str){
-			this.toggleTag(str);
-		});
+		var i;
+		for (i = 0; i < tags.length; i += 1){
+			this.toggleTag(tags[ i ]);
+		}
 	},
 	clone: function(o){
 		"use strict";
 		var clone = Task.new();
 		clone.setTitle = o.title;
-		clone.setTags = o.tags;
+		clone.addTags(o.tags);
 		clone.completedTime = o.completedTime;
 		return clone;
 	}
