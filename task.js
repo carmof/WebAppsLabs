@@ -149,7 +149,7 @@ proto = {
 		}
 		return this;
 	},
-	toogleTags: function(tags){
+	toggleTags: function(tags){
 		"use strict";
 		var i;
 		for (i = 0; i < tags.length; i += 1){
