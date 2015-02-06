@@ -157,12 +157,12 @@ proto = {
 		}
 		return this ;
 	},
-	clone: function(o){
+	clone: function(){
 		"use strict";
 		var clone = Task.new();
-		clone.setTitle = o.title;
-		clone.addTags(o.tags);
-		clone.completedTime = o.completedTime;
+		clone.setTitle(this.title);
+		clone.addTags(this.tags);
+		clone.completedTime = this.completedTime;
 		return clone;
 	}
 };
