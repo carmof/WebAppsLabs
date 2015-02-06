@@ -160,13 +160,24 @@ proto = {
 	clone: function(){
 		"use strict";
 		var clone = Task.new();
-		clone.setTitle(this.title);
-		clone.addTags(this.tags);
-		clone.completedTime = this.completedTime;
+		clone.setTitle(cloneObject(this.title));
+		clone.addTags(cloneObject(this.tags));
+		clone.completedTime = cloneObject(this.completedTime);
 		return clone;
 	}
 };
-
+function cloneObject(obj) {
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+ 
+    var temp = obj.constructor(); // give temp the original obj's constructor
+    for (var key in obj) {
+        temp[key] = cloneObject(obj[key]);
+    }
+ 
+    return temp;
+}
 
 
 // DO NOT MODIFY ANYTHING BELOW THIS LINE
