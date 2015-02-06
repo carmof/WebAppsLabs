@@ -160,7 +160,7 @@ proto = {
 		var clone = Task.new();
 		clone.setTitle(cloneObject(this.title));
 		clone.addTags(cloneObject(this.tags));
-		clone.completedTime = cloneObject(this.completedTime);
+		clone.completedTime = this.completedTime;
 		return clone;
 	}
 };
