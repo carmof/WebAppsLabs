@@ -94,7 +94,6 @@ proto = {
 	hasTag: function(str){
 		"use strict";
 		var i;
-		str = str.replace("#", "");
 		for (i = 0;i < this.tags.length;i += 1){
 			if (this.tags[ i ] === str){
 				return true;
@@ -111,7 +110,6 @@ proto = {
 	},
 	removeTag: function(str){
 		"use strict";
-		str = str.replace("#", "");
 		var i;
 		for (i = 0; i < this.tags.length ; i += 1){
 			if (this.tags[ i ] === str){
