@@ -103,7 +103,6 @@ proto = {
 	},
 	addTag: function(str){
 		"use strict";
-		str = str.replace("#", "");
 		if (!this.hasTag(str)){
 			this.tags.push(str);
 		}
