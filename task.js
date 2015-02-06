@@ -155,6 +155,7 @@ proto = {
 		for (i = 0; i < tags.length; i += 1){
 			this.toggleTag(tags[ i ]);
 		}
+		return this;
 	},
 	clone: function(o){
 		"use strict";
