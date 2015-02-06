@@ -33,8 +33,8 @@ function addRandomTags(size) {
     	expect(function() {
 		 Task.new; }).to.not.throw(Error);
     });
-	it("returns an object with setTitle, isCompleted, toggleCompleted, hasTag, addTag, removeTag, toggleTag, addTags, removeTags, toogleTags, clone", function() {
-	       ['setTitle', 'isCompleted', 'toggleCompleted', 'hasTag', 'addTag', 'removeTag', 'toggleTag', 'addTags', 'removeTags', 'toogleTags', 'clone'].forEach(function(key) {
+	it("returns an object with setTitle, isCompleted, toggleCompleted, hasTag, addTag, removeTag, toggleTag, addTags, removeTags, toggleTags, clone", function() {
+	       ['setTitle', 'isCompleted', 'toggleCompleted', 'hasTag', 'addTag', 'removeTag', 'toggleTag', 'addTags', 'removeTags', 'toggleTags', 'clone'].forEach(function(key) {
 	           expect(task[key]).to.be.a('function');
 	       });
 	   });
@@ -102,7 +102,7 @@ function addRandomTags(size) {
 		var vet = addRandomTags(10);
 		task.addTags(vet);
 		vet.forEach(function (key) {
-		expect(task.hasTag(key)).to.be.equal(false);
+		expect(task.hasTag(key)).to.be.equal(true);
 		});
 	});
 	it("addTags - if is already added, don't include it", function () {
@@ -143,16 +143,44 @@ function addRandomTags(size) {
 		});
 	});
 	
-	it("toggleTags - check the return of toggleTag, with a previous tag", function () {
+	it("toggleTags - check the return of toggleTags, with a previous tag", function () {
+		var vet = ["chuchu","chuchu2"];
+		var vet2 = ["chuchu2"];
+		task.toggleTags(vet);
+		task.toggleTags(vet2);
+		expect(task.tags.length).to.be.equal(1);
+		expect(task.hasTag("chuchu")).to.be.equal(true);
+	});
+    it("toggleTags - check the return of toggleTags", function () {
+		var vet = [];
+		expect(task.toggleTags(vet)).to.be.equal(task);
+	});
+	it("clone - Returns an object", function () {
+		var o = task.clone();
+		expect(task).to.be.a("object");
+	});
+	it("cloned object has the following methods: setTitle, isCompleted, toggleCompleted, hasTag, addTag, removeTag, toggleTag, addTags, removeTags, toggleTags, clone", function() {
+		var o = task.clone();
+		['setTitle', 'isCompleted', 'toggleCompleted', 'hasTag', 'addTag', 'removeTag', 'toggleTag', 'addTags', 'removeTags', 'toggleTags', 'clone'].forEach(function(key) {
+		           expect(o[key]).to.be.a('function');
+		 });
+	});
+	it("clone - returns same title", function () {
+		task.setTitle("chuchu");
+		var o = task.clone();
+		expect(o.title).to.be.equal("chuchu");
+	});
+	it("clone - returns same status", function () {
+		task.toggleCompleted();
+		var o = task.clone();
+		expect(o.completedTime).to.be.equal(task.completedTime);
+	});
+	it("clone - returns same tags", function () {
 		var vet = addRandomTags(10);
 		task.addTags(vet);
+		var o = task.clone();
 		vet.forEach(function (key) {
-			expect(task.toggleTags(vet)).to.be.equal(task);
+			expect(o.hasTag(key)).to.be.equal(true);
 		});
 	});
-    it("toggleTags - check the return of toggleTag, without a previous tag", function () {		var vet = addRandomTags(10);
-		vet.forEach(function (key) {
-			expect(task.toggleTags(vet)).to.be.equal(task);
-		});
-	}); 
 });
