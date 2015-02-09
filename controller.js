@@ -100,7 +100,6 @@ var makeController = function(element) {
     */
    function addAddButton() {
       var button;   // Should be a reference to the newly created button
-
       // Use jQuery syntax to create a new html element
       // Use appropriate append-type jQuery method to add it right after
       // "el"
