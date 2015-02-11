@@ -1,3 +1,4 @@
+/* global $ */
 /*
  * controller.js
  *
