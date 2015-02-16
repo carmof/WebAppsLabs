@@ -40,12 +40,7 @@ function makeNewCollection(arr) {
  */
 
 proto = {
-   //Add instance methods here
-   //qweqwe
-   //qweqweq
-}
-
-   },
+   //Add instance methods he
    get: function () {
       "use strict";
 
