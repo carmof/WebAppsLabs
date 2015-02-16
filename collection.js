@@ -13,8 +13,12 @@ Task = require("./task");
  */
 
 function makeNewCollection(arr) {
-
-};
+   "use strict";
+   
+   var blablabla = Object.create(proto, {
+      
+   });
+}
 
 
 /*
@@ -22,9 +26,60 @@ function makeNewCollection(arr) {
  */
 
 proto = {
-   //Add instance methods here
+   // Add instance methods here
+   legth: function(str){
+      "use strict";
 
-}
+   },
+   isEmpty: function () {
+      "use strict";
+
+   },
+   get: function () {
+      "use strict";
+
+      return null;
+   },
+   has: function () {
+      "use strict";
+
+      
+      return false;
+   },
+   add: function () {
+      "use strict";
+
+   },
+   new: function () {
+      "use strict";
+
+   },
+   remove: function () {
+      "use strict";
+
+   },
+   filter: function () {
+      "use strict";
+
+   },
+   forEach: function () {
+      "use strict";
+
+   },
+   groupByTag: function () {
+      "use strict";
+
+   },
+   print: function () {
+      "use strict";
+
+   },
+   concat: function () {
+      "use strict";
+
+   }
+   
+};
 
 
 
