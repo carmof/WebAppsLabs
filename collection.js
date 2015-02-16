@@ -26,12 +26,6 @@ function makeNewCollection(arr) {
 	});
 	return Object.preventExtensions(o);
 };
-   "use strict";
-   
-   var blablabla = Object.create(proto, {
-      
-   });
-}
 
 
 /*
