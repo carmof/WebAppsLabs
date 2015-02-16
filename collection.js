@@ -11,7 +11,7 @@ Task = require("./task");
 /*
  *       Constructors
  */
-
+   /*mas gente que loucura*/
 function makeNewCollection(arr) {
 	"use strict";
 	var o = Object.create(proto, {
