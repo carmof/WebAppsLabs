@@ -13,6 +13,20 @@ Task = require("./task");
  */
 
 function makeNewCollection(arr) {
+	"use strict";
+	var o = Object.create(proto, {
+                arr: {
+                    enumerable: true,
+                    configurable: true,
+                    writeable: true,
+                    value: []
+                }
+            });
+	arr.forEach(function(val){
+		o.arr.push(val);
+	});
+	return Object.preventExtensions(o);
+};
    "use strict";
    
    var blablabla = Object.create(proto, {
