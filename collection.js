@@ -36,6 +36,7 @@ function makeNewCollection(arr) {
 proto = {
    //Add instance methods here
    //qweqwe
+   //qweqweq
 }
 
 
