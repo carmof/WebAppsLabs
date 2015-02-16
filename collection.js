@@ -40,13 +40,9 @@ function makeNewCollection(arr) {
  */
 
 proto = {
-   // Add instance methods here
-   legth: function(str){
-      "use strict";
-
-   },
-   isEmpty: function () {
-      "use strict";
+   //Add instance methods here
+   //qweqwe
+}
 
    },
    get: function () {
