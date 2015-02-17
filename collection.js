@@ -27,17 +27,31 @@ function makeNewCollection(arr) {
 	return Object.preventExtensions(o);
 };
 
-
+function helper(arg) {
+   
+   return ;
+}
 /*
  *       Prototype / Instance methods
  */
 
 proto = {
    //Add instance methods here
-   get: function () {
+   length: function () {
       "use strict";
-
-      return null;
+      return this.arr.length;
+   },
+   isEmpty: function () {
+      "use strict";
+      return this.length() === 0;
+   },
+   get: function (arg) {
+      "use strict";
+      var index = helper(arg);
+      if(index === -1){
+         return null;
+      }
+      return this.arr[index];
    },
    has: function () {
       "use strict";
