@@ -21,15 +21,54 @@ function makeNewCollection(arr) {
                     value: []
                 }
             });
-	arr.forEach(function(val){
-		o.arr.push(val);
-	});
+  if(Array.isArray(arr)){
+  	arr.forEach(function(val){
+  		o.arr.push(val);
+  	});
+  }
 	return Object.preventExtensions(o);
-};
+}
+
+function turnArgIntoFunc(arg){
+  var type = typeof arg, that = this, i;
+  if (type === 'number') {
+    return function(){
+      for( i = 0; i< that.arr.length ; i+= 1){
+        if(that.arr[i].id === arg){
+          return i;
+        }
+      }
+      return -1;
+    };
+  }else if (type === 'string') {
+    var reg = new RegExp(arg)
+    return function(){
+      for( i = 0; i< that.arr.length ; i+= 1){
+        if((reg).test(that.arr[i].title)){
+          return i;
+        }
+      }
+      return -1;
+    };
+  }else if (type === 'object') {
+    return function(){
+      for( i = 0; i< that.arr.length ; i+= 1){
+        if((arg).test(that.arr[i].title)){
+          return i;
+        }
+      }
+      return -1;
+    };
+  }
+  return -1;
+}
 
 function helper(arg) {
-   
-   return ;
+  if (typeof arg === 'function'){
+    return arg();
+  }else{
+    return turnArgIntoFunc.call(this, arg)();
+  }
 }
 /*
  *       Prototype / Instance methods
@@ -47,7 +86,9 @@ proto = {
    },
    get: function (arg) {
       "use strict";
-      var index = helper(arg);
+      var that = this;
+      var index = helper.call(that, arg);
+      console.log("fim");
       if(index === -1){
          return null;
       }
