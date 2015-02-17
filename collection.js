@@ -86,19 +86,16 @@ proto = {
    },
    get: function (arg) {
       "use strict";
-      var that = this;
-      var index = helper.call(that, arg);
-      console.log("fim");
+      var index = helper.call(this, arg);
       if(index === -1){
          return null;
       }
       return this.arr[index];
    },
-   has: function () {
+   has: function (arg) {
       "use strict";
-
-      
-      return false;
+      var index = helper.call(this, arg);
+      return index !== -1;
    },
    add: function () {
       "use strict";
