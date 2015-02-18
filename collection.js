@@ -70,6 +70,15 @@ function helper(arg) {
     return turnArgIntoFunc.call(this, arg)();
   }
 }
+
+function addOneTask(task){
+  if(!this.has(task.id)){
+    this.arr.push(task);
+  }
+}
+
+function removeOneTask(task){
+}
 /*
  *       Prototype / Instance methods
  */
@@ -97,16 +106,43 @@ proto = {
       var index = helper.call(this, arg);
       return index !== -1;
    },
-   add: function () {
+   add: function (arg) {
       "use strict";
+      var that = this;
+      if(Array.isArray(arg)){
+        arg.forEach(function(task){
+          addOneTask.call(that, task);
+        });
+      }else{
+        addOneTask.call(that, arg);
+      }
+      return that;
 
    },
    new: function () {
       "use strict";
-
+      var task = new Task();
+      this.add(task);
+      return task;
    },
-   remove: function () {
+   remove: function (arg) {
       "use strict";
+      var that = this, i = 0;
+      if(Array.isArray(arg)){
+        for(i =0; i< that.arr.length; i+=1){
+          arg.forEach(function(task){
+            if(task.id === that.arr[i].id){
+              that.arr.splice(i,1);
+            }
+          });
+        }
+      }else{
+        for(i =0; i< that.arr.length; i+=1){
+          if(arg.id === that.arr[i].id){
+            that.arr.splice(i,1);
+          }
+        }
+      }
 
    },
    filter: function () {
