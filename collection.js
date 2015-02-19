@@ -77,8 +77,6 @@ function addOneTask(task){
   }
 }
 
-function removeOneTask(task){
-}
 /*
  *       Prototype / Instance methods
  */
@@ -129,25 +127,37 @@ proto = {
       "use strict";
       var that = this, i = 0;
       if(Array.isArray(arg)){
-        for(i =0; i< that.arr.length; i+=1){
-          arg.forEach(function(task){
-            if(task.id === that.arr[i].id){
+        arg.forEach(function(id){
+          for(i =0; i< that.arr.length; i+=1){
+            if(id === that.arr[i].id){
               that.arr.splice(i,1);
             }
-          });
-        }
+          }
+        });
       }else{
         for(i =0; i< that.arr.length; i+=1){
-          if(arg.id === that.arr[i].id){
+          if(arg === that.arr[i].id){
             that.arr.splice(i,1);
           }
         }
       }
+      return this;
 
    },
-   filter: function () {
+   filter: function (arg) {
       "use strict";
+      var index, filtered = TaskCollection.new(), that = this;
+      if(Array.isArray(arg)){
+        arg.forEach(function (id){
+          if(that.has(id)){
+            filtered.add(that.get(id));
+          }
+        });
+      }else{
+        filtered.add(that.get(arg));
+      }
 
+      return filtered;
    },
    forEach: function () {
       "use strict";
