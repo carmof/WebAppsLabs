@@ -159,9 +159,12 @@ proto = {
 
       return filtered;
    },
-   forEach: function () {
+   forEach: function (func) {
       "use strict";
-
+      this.arr.forEach(function(task){
+        func(task);
+      });
+      return this;
    },
    groupByTag: function () {
       "use strict";
