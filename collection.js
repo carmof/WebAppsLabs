@@ -149,9 +149,11 @@ proto = {
       var index, filtered = TaskCollection.new(), that = this;
       if(Array.isArray(arg)){
         arg.forEach(function (id){
-          if(that.has(id)){
-            filtered.add(that.get(id));
+          index = helper.call(that, id);
+          if(index !== -1){
+             filtered.add(that.arr[index]);
           }
+          
         });
       }else{
         filtered.add(that.get(arg));
