@@ -170,11 +170,24 @@ proto = {
    },
    groupByTag: function () {
       "use strict";
+      var i, obj = {}, task;
 
+      for(i =0; i< this.arr.length; i++){
+        task = this.arr[i];
+        task.tags.forEach(function(val){
+          if(!obj.hasOwnProperty(val)){
+            obj[val] = TaskCollection.new();
+            obj[val].add(task);
+          }else{
+            obj[val].add(task);
+          }
+        });   
+      }
+      return obj;
    },
    print: function () {
       "use strict";
-
+      
    },
    concat: function () {
       "use strict";
