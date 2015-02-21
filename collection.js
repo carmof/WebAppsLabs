@@ -77,6 +77,27 @@ function addOneTask(task){
   }
 }
 
+function printTask(task){
+  var print = "", dateArr;
+  print += task.title + " ";
+  if(task.isCompleted()){
+    dateArr = task.completedTime.toLocaleDateString('en-US').split("/");
+    print += "(" + dateArr[2] + "/" + dateArr[0] + "/" + dateArr[1] + ") ";
+  }
+  task.tags.forEach(function(tag){
+    if(tag[0] !== '#'){
+      print += "#"+ tag + " ";
+    }else{
+      print += tag + " ";
+    }
+  });
+  if(task.tags.length !== 0){
+    print += " ";
+  }
+  return print + "\n";
+
+}
+
 /*
  *       Prototype / Instance methods
  */
@@ -187,7 +208,12 @@ proto = {
    },
    print: function () {
       "use strict";
-      
+      var str = "";
+      this.arr.forEach(function(task){
+        str += printTask(task);
+      });
+      return str;
+
    },
    concat: function () {
       "use strict";
