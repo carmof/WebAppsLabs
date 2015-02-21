@@ -22,13 +22,9 @@ TaskCollection = require('./collection.js');
           });
       
       it("Returns an object", function () {
-         expect(task).to.be.a("object");
          expect(taskCollection).to.be.a("object");
       });
-      it("defines a variable makeNewTask", function() {
-         expect(function() {
-         Task.new; }).to.not.throw(Error);
-      });
+     
       it("defines a variable makeNewCollection", function() {
          expect(function() {
          TaskCollection.new; }).to.not.throw(Error);
@@ -46,5 +42,7 @@ TaskCollection = require('./collection.js');
          taskCollection.add(task);
          expect(taskCollection.isEmpty()).to.be.equal(false);
       });
-      
+      it("something - ", function () {
+         
+      });
 });
