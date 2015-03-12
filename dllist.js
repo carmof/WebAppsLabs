@@ -56,6 +56,7 @@ proto = {
       while(pointer !== element){
          if(pointer === this.sentinel){
             return null;
+         }
          pointer = pointer.next;
       }
       newElement.next = pointer.next;
@@ -69,26 +70,44 @@ proto = {
       return this.insertAt(value, this.sentinel);
    },
    push : function (value){
-      return this.insertAt(value, this.last);
+      return this.insertAt(value, this.sentinel.prev);
    },
    endAt : function (item){
-      var pointer = this.sentinel.next;
+      var pointer = this.sentinel.next, pointerAux;
+
       while(pointer !== item){
          if(pointer === this.sentinel){
             return null;
          }
          pointer = pointer.next;
       }
-      //disconnecting the part that is not gonna be used
-      pointer.next.prev = null; 
-      sentinel.prev.next = null;
+
+      //processing the new _length
+      pointerAux = pointer.next;
+      while(pointerAux !== this.sentinel){
+         this._length -= 1;
+         pointerAux = pointerAux.next;
+      }
 
       //connecting the two ends
       pointer.next = this.sentinel;
-      sentinel.prev = pointer;
+      this.sentinel.prev = pointer;
    },
    remove : function (item){
-      
+      var pointer = this.sentinel.next;
+
+      while(pointer !== item){
+         if(pointer === this.sentinel){
+            return null;
+         }
+         pointer = pointer.next;
+      }
+
+      //connecting the two ends
+      pointer.next.prev = pointer.prev;
+      pointer.prev.next = pointer.next;
+
+      this._length -= 1;
    }
 };
 
