@@ -13,15 +13,15 @@ Iterator = require("./iterator");
  */
 
 function makeNewList() {
-   var lst, sentinel;
+   var lst, sentinel, _length;
 
+   _length = 0;
    lst = Object.create(proto);
-   sentinel = {
-      value: null,
-      next: sentinel,
-      prev: sentinel
-   };
+   sentinel = { value: null };
+   sentinel.next = sentinel;
+   sentinel.prev = sentinel;
    lst.sentinel = sentinel;
+   lst._length = _length;
    return lst;
 }
 
@@ -32,7 +32,64 @@ function makeNewList() {
 
 proto = {
    // Add instance methods here
+   isEmpty : function () {
+      return this._length === 0;
+   },
+   length : function (){
+      return this._length;
+   },
+   first : function (){
+      if(this.isEmpty()){
+         throw new Error("The list has no first element, it is empty.");
+      }
+      return this.sentinel.next;
+   },
+   last : function (){
+      if(this.isEmpty()){
+         throw new Error("The list has no last element, it is empty.");
+      }
+      return this.sentinel.prev;
+   },
+   insertAt : function (value, element) {
+      var pointer = this.sentinel.next, newElement = {};
+      newElement.value = value;
+      while(pointer !== element){
+         if(pointer === this.sentinel){
+            return null;
+         pointer = pointer.next;
+      }
+      newElement.next = pointer.next;
+      newElement.prev = pointer;
+      pointer.next = newElement;
+      newElement.next.prev = newElement;
+      this._length += 1;
+      return newElement;
+   },
+   unshift : function (value){
+      return this.insertAt(value, this.sentinel);
+   },
+   push : function (value){
+      return this.insertAt(value, this.last);
+   },
+   endAt : function (item){
+      var pointer = this.sentinel.next;
+      while(pointer !== item){
+         if(pointer === this.sentinel){
+            return null;
+         }
+         pointer = pointer.next;
+      }
+      //disconnecting the part that is not gonna be used
+      pointer.next.prev = null; 
+      sentinel.prev.next = null;
 
+      //connecting the two ends
+      pointer.next = this.sentinel;
+      sentinel.prev = pointer;
+   },
+   remove : function (item){
+      
+   }
 };
 
 
