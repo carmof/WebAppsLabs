@@ -40,8 +40,7 @@
 // - constant    <--- Constant iterator, returning a single value forever
 
 var Iterator = (function() {
-
-    var Iterator, proto;
+    var proto;
 
     Iterator = {};
     proto = {};
@@ -57,11 +56,13 @@ var Iterator = (function() {
 
     // Class methods
     Iterator.fromArray = function(arr) {
-      var i = -1;
-      return Iterator.new(
-         function next() { i += 1; return arr[i]; },
-         function hasNext() { return i + 1 < arr.length; }
-      );
+        var i = -1;
+        return Iterator.new(function next() {
+            i += 1;
+            return arr[ i ];
+        }, function hasNext() {
+            return i + 1 < arr.length;
+        });
     };
 
     Iterator.sequence = function(from, to, step) {
@@ -320,6 +321,6 @@ var Iterator = (function() {
     return Iterator;
 }());
 
-try { module.export = Iterator; } catch (err) {}
+try { module.exports = Iterator; } catch (err) {}
 
 

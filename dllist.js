@@ -151,27 +151,21 @@ proto = {
       return iterator.toArray();
    },
    iterateFrom: function(listItem){
-      var next, hasNext, pointer, that = this, lock = false;
+      var next, hasNext, pointer, that = this;
       pointer = that.sentinel;
       next = function (){
-         if (lock){
-            pointer = pointer.next;
-            lock = false;
-            return pointer.value;
-         }
-         throw new Error("Need to call 'hasNext' first");
+         pointer = pointer.next;
+         return pointer.value;
       };
       hasNext = function (){
-         lock = true;
-         return pointer.next !== that.sentinel && pointer.next!== listItem;
+         return pointer.next !== that.sentinel && pointer.next !== listItem;
       };
       return Iterator.new(next, hasNext);
    },
    reverseIterateFrom: function(listItem){
-      var next, hasNext, pointer, that;
-      that = this;
+      var next, hasNext, pointer, that = this;
       pointer = that.sentinel;
-      while ((pointer.prev !== listItem) && (pointer.prev !== this.sentinel)){
+      while (pointer.prev !== listItem && pointer.prev !== this.sentinel){
          pointer = pointer.prev;
       }
       // now pointer points to the listItem
